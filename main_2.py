@@ -37,6 +37,7 @@ def main():
     glutDisplayFunc(display)
     glutKeyboardFunc(processNormalKeys)
     glutSpecialFunc(processSpecialKeys)
+    glutMouseFunc(mouseClilc)
 
     glutMainLoop()
 
@@ -48,7 +49,7 @@ def reshape(w, h):
 
     glMatrixMode(GL_PROJECTION)
     glLoadIdentity()
-    glOrtho(0, 10, 0, 10, -10, 10)
+    glOrtho(-500, 500, -500, 500, -10, 10)
 
     glMatrixMode(GL_MODELVIEW)
     glLoadIdentity()
@@ -70,7 +71,7 @@ def processSpecialKeys(key, x, y):
         display()
     elif key == GLUT_KEY_DOWN:
         glMatrixMode(GL_MODELVIEW)
-        glRotated(5, 1, 1, 1)
+        glRotated(10, 1, 0, 1)
         display()
 
 
@@ -86,12 +87,16 @@ def display():
         for point_number in face:
             glVertex3f(points[point_number][0], points[point_number][1], points[point_number][2])
         glEnd()
-    glutSwapBuffers();
+    glutSwapBuffers()
 
 
+def mouseClilc(button, state, x, y):
+    pprint(x)
+    pprint(y)
+    pprint('\n')
 
 
-load_points_faces('./data.txt')
+load_points_faces('./data_2_g.txt')
 main()
 pprint(points)
 pprint(faces)
