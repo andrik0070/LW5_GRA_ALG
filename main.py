@@ -86,7 +86,7 @@ def display():
         for point_number in face:
             glVertex3f(points[point_number][0], points[point_number][1], points[point_number][2])
         glEnd()
-    glutSwapBuffers();
+    glutSwapBuffers()
 
 
 
